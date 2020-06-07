@@ -1,0 +1,54 @@
+extends ../common.pug
+block default
+  div(class="table")
+    h2 Admin 
+    br
+    a.btn.btn-success(href="/books") New Book
+    span &nbsp
+    a.btn.btn-success(href="/transactions") Transactions
+    hr
+    a.btn.btn-success(href="/clearCookie") Sign Out
+    hr
+    label.badge.badge-info Users
+    table.table
+      tr
+        th Name
+        th Phone
+        th Actions
+        if lists
+          each user in lists
+            tr
+              td= user.user
+              td= user.phone
+              td
+                a(href="/users/changeUser/"+user.id)  Change         
+                a(href="/users/deleteUser/"+user.id)  Delete
+    label.badge.badge-info Books
+    table.table
+      tr
+        th Title 
+        th Description
+        th Actions
+        if list
+          each book in list
+            tr
+              td= book.title
+              td= book.des
+              td
+                a(href="/books/changeBook/"+book.id)  Change
+                a(href="/books/deleteBook/"+book.id)  Delete
+    label.badge.badge-info Transactions
+    table.table
+      tr
+        th Name 
+        th Title Book
+        th Actions
+        th Complete
+        if transactions
+          each tran in transactions
+            tr
+              td= tran.user
+              td= tran.title
+              td
+                a(href="/transactions/"+tran.transId+"/complete") isComplete
+              td= tran.isComplete

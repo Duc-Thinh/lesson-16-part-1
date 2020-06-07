@@ -1,0 +1,54 @@
+extends ../common.pug
+block default
+  div(class="table")
+    br
+    a.btn.btn-success(href="/books") New Book
+    span &nbsp
+    a.btn.btn-success(href="/transactions") Transactions
+    hr
+    a.btn.btn-success(href="/clearCookie") Sign Out
+    hr
+    form(action="/books/searchBook", method='GET')
+      input.input-group.mb-3(type="text", name='q', placeholder="Title book")
+      button.btn.btn-primary Search
+    label.badge.badge-info Seach Book
+    table.table
+      tr
+        th Title 
+        th Description
+        th Actions
+        if listBook
+          each book in listBook
+            tr
+              td= book.title
+              td= book.des
+              td
+                a(href="/books/changeBook/"+book.id)  Change
+                a(href="/books/deleteBook/"+book.id)  Delete
+
+    label.badge.badge-info Books
+    table.table
+      tr
+        th Title 
+        th Description
+        th Actions
+        if list
+          each book in list
+            tr
+              td= book.title
+              td= book.des
+              td
+                a(href="/books/changeBook/"+book.id)  Change
+                a(href="/books/deleteBook/"+book.id)  Delete
+    label.badge.badge-info Transactions
+    table.table
+      tr
+        th Name 
+        th Title Book
+        th Complete
+        if transactions
+          each tran in transactions
+            tr
+              td= tran.user
+              td= tran.title
+              td= tran.isComplete

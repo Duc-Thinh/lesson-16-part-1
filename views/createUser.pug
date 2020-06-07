@@ -1,0 +1,16 @@
+extends ../common.pug
+block default
+  div(class="table")
+    br
+    label.badge.badge-success(for="user") Create User
+    if errors
+      each error in errors
+        .alert.alert-danger= error
+    br
+    form(action="/users/createUser", method="POST")
+      .form-group
+        input#user.input-group.mb-3(type="text", name="user", placeholder="Name user" value = values? values.user: '')
+        input.input-group.mb-3(type="text", name="phone", placeholder="Phone Number" value = values? values.phone: '')
+        input.input-group.mb-3(type="text", name="email", placeholder="Email" value = values? values.email: '')
+        input.input-group.mb-3(type="text", name="password", placeholder="Password" value = values? values.password: '')
+        button.btn.btn-primary create

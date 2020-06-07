@@ -1,0 +1,5 @@
+extends ../common.pug
+block default
+  form(action="/users/changeUser/update/"+user.id, method="POST")
+      input(type="text", name="user", value=user.user, placeholder="Change user")
+      button Change
