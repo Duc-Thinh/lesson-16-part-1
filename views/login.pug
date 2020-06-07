@@ -1,0 +1,17 @@
+extends ../common.pug
+block default
+  div(class="table")
+    br
+    label.badge.badge-success(for="user") Login
+    if errors
+      each error in errors
+        .alert.alert-danger= error
+    br
+    form(action="/auth/login", method="POST")
+      .form-group
+        input#user.input-group.mb-3(type="text", name="email", placeholder="Email" value = values? values.email: '')
+        input.input-group.mb-3(type="text", name="password", placeholder="Password" value = values? values.password: '')
+        button.btn.btn-primary Sign In
+        br
+  form(action="/users", method="GET")
+      button.btn.btn-primary Sign Up

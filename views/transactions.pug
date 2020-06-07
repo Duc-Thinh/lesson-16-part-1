@@ -1,0 +1,22 @@
+extends ../common.pug
+block default
+  if errors
+    each error in errors
+      .alert.alert-danger= error
+  form(action="/transactions/create", method="POST")
+    label.badge.badge-success(for="transactions") Users & Books :
+    br
+    input#transactions(list="users" name="user" placeholder="User")
+    datalist#users
+      if lists
+        each user in lists
+           option(value=`${user.user}`)  
+    input(list="books" name="book" placeholder="Book")
+    datalist#books
+      if list
+        each book in list
+          option(value=`${book.title}`)  
+    br
+    br
+    button.btn.btn-primary Submit
+  

@@ -1,0 +1,6 @@
+extends ../common.pug
+block default
+  form(action="/books/updateBook/"+book.id, method="POST")
+    input(type="text", name="title", placeholder="Title book")
+    input(type="text", name="des", placeholder="Description book")
+    button update
